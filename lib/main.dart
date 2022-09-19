@@ -1,18 +1,14 @@
 import 'package:crash_couse_advanced/app.dart';
+import 'package:crash_couse_advanced/screens/splash/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:crash_couse_advanced/providers/session_provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await dotenv.load(fileName: ".env");
-
-  await Supabase.initialize(
-    url: 'https://${dotenv.env['SUPABASE_PROJECT_ID']!}.supabase.co',
-    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
-    debug: false,
+  runAppWithOptions(
+    envFileName: '.env',
+    splashState: SplashState(),
   );
-
-  runApp(const App());
 }
