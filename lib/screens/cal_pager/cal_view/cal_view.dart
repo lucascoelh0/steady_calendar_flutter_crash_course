@@ -1,4 +1,7 @@
+import 'package:crash_couse_advanced/providers/session_provider.dart';
+import 'package:crash_couse_advanced/util/alert.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../config/styles.dart';
 import '../../../models/calendar.dart';
@@ -44,11 +47,25 @@ class CalView extends StatelessWidget {
                   ),
                 ),
               ),
-              MonthGrid(cal),
+              MonthGrid(cal, _dateSelected, _dateDeselected),
             ],
           ),
-        )
+        ),
       ],
     );
+  }
+
+  _dateSelected(BuildContext context, Calendar cal, DateTime date) {
+    final session = Provider.of<SessionProvider>(context, listen: false);
+    session
+        .saveDate(cal, date)
+        .catchError((e) => showAlert(context, '', e.toString()));
+  }
+
+  _dateDeselected(BuildContext context, Calendar cal, DateTime date) {
+    final session = Provider.of<SessionProvider>(context, listen: false);
+    session
+        .deleteDate(cal, date)
+        .catchError((e) => showAlert(context, '', e.toString()));
   }
 }

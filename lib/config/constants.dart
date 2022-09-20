@@ -1,5 +1,9 @@
 import '../models/calendar_color.dart';
 
+String appWebsite = 'https://steadycalendar.com';
+
+String appSupportEmail = 'hello@steadycalendar.com?subject=Feedback';
+
 String baseBackgroundImageURL(String supabaseProjectID) =>
     "https://$supabaseProjectID.supabase.co/storage/v1/object/public/backgrounds";
 
@@ -7,7 +11,7 @@ String appRatingURLiOS =
     'https://itunes.apple.com/us/app/apple-store/id1065379512?mt=8';
 
 String appRatingURLAndroid =
-    'https://play.google.com/store/apps/details?id=com.manninglabs.steady';
+    'https://play.google.com/store/apps/details?id=com.manninglabs.steadycalendar&hl=en&gl=US';
 
 List<String> backgrounds = [
   'adventures-begin-mug@3x.png',

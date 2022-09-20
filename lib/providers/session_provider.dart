@@ -5,6 +5,7 @@ import '../models/calendar.dart';
 
 class SessionProvider extends ChangeNotifier {
   List<Calendar> _cals = [];
+
   List<Calendar> get cals => _cals;
   CalRepoInterface calRepo;
 
@@ -15,4 +16,13 @@ class SessionProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  saveCalendar(Calendar cal) async => calRepo.saveCalendar(cal);
+
+  deleteCalendar(Calendar cal) async => calRepo.deleteCalendar(cal);
+
+  saveDate(Calendar cal, DateTime date) async => calRepo.saveDate(cal, date);
+
+  deleteDate(Calendar cal, DateTime date) async =>
+      calRepo.deleteDate(cal, date);
 }

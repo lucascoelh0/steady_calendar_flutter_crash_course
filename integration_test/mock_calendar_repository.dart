@@ -22,4 +22,24 @@ class MockCalendarRepository extends CalRepoInterface {
   Future<List<Calendar>> refreshCalendars() async {
     return cals;
   }
+
+  @override
+  Future<void> deleteCalendar(Calendar cal) async {
+    return;
+  }
+
+  @override
+  Future<void> deleteDate(Calendar cal, DateTime date) async {
+    return;
+  }
+
+  @override
+  Future<void> saveCalendar(Calendar cal) async {
+    return;
+  }
+
+  @override
+  Future<void> saveDate(Calendar cal, DateTime date) async {
+    return;
+  }
 }

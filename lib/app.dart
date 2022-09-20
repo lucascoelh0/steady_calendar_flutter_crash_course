@@ -1,8 +1,13 @@
 import 'package:crash_couse_advanced/providers/session_provider.dart';
 import 'package:crash_couse_advanced/repositories/cal_repo.dart';
 import 'package:crash_couse_advanced/repositories/cal_repo_interface.dart';
+import 'package:crash_couse_advanced/screens/cal_edit/cal_bg_picker.dart';
+import 'package:crash_couse_advanced/screens/cal_edit/cal_color_picker.dart';
+import 'package:crash_couse_advanced/screens/cal_edit/cal_edit.dart';
+import 'package:crash_couse_advanced/screens/cal_list/cal_list.dart';
 import 'package:crash_couse_advanced/screens/cal_pager/cal_pager.dart';
 import 'package:crash_couse_advanced/screens/login_options/login_options.dart';
+import 'package:crash_couse_advanced/screens/menu/menu.dart';
 import 'package:crash_couse_advanced/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -25,16 +30,20 @@ class App extends StatelessWidget {
         Intro.routeName: (context) => const Intro(),
         LoginOptions.routeName: (context) => const LoginOptions(),
         CalPager.routeName: (context) => const CalPager(),
+        CalList.routeName: (context) => const CalList(),
+        CalEdit.routeName: (context) => const CalEdit(),
+        CalBGPicker.routeName: (context) => const CalBGPicker(),
+        CalColorPicker.routeName: (context) => const CalColorPicker(),
+        Menu.routeName: (context) => const Menu(),
       },
     );
   }
 }
 
-Future<void> runAppWithOptions({
-  String envFileName = '.env',
-  CalRepoInterface calendarRepository = const CalendarRepository(),
-  required State<Splash> splashState
-}) async {
+Future<void> runAppWithOptions(
+    {String envFileName = '.env',
+    CalRepoInterface calendarRepository = const CalendarRepository(),
+    required State<Splash> splashState}) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
